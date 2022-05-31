@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { enterRoom } from "../features/appSlice";
 import { db } from "../Firebase";
-
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 function SidebarOption({ Icon, title, addChannelOption, id }) {
   const dispatch = useDispatch();
 
@@ -34,7 +34,9 @@ function SidebarOption({ Icon, title, addChannelOption, id }) {
         <h3>{title}</h3>
       ) : (
         <SidebarOptionChannel>
-          <span>#</span>
+          <span>
+            <ChatBubbleIcon />
+          </span>
           {title}
         </SidebarOptionChannel>
       )}
@@ -43,7 +45,6 @@ function SidebarOption({ Icon, title, addChannelOption, id }) {
 }
 
 export default SidebarOption;
-
 const SidebarOptionContainer = styled.div`
   display: flex;
   font-size: 12px;

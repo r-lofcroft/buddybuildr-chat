@@ -2,31 +2,31 @@ import React from "react";
 import styled from "styled-components";
 import Avatar from "@mui/material/Avatar";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import SearchIcon from "@mui/icons-material/Search";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase";
+import { useNavigate } from "react-router-dom";
 function Header() {
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const handleRedirect = () => {
+    navigate("/");
+  };
   return (
     <HeaderContainer>
-      {/* Left */}
       <HeaderLeft>
         <HeaderAvatar
-          onClick={() => auth.signOut()}
-          src={user?.photoURL}
+          onClick={() => handleRedirect("/")}
+          src="logo.svg"
           alt={user?.displayName}
         />
         <AccessTimeIcon />
       </HeaderLeft>
-      {/* Middle */}
       <HeaderSearch>
-        <SearchIcon />
         <input placeholder="Search..."></input>
       </HeaderSearch>
-      {/* Right */}
       <HeaderRight>
-        <HelpOutlineIcon />
+        <LogoutIcon onClick={() => auth.signOut()} />
       </HeaderRight>
     </HeaderContainer>
   );
@@ -65,18 +65,21 @@ const HeaderSearch = styled.div`
   opacity: 1;
   border-radius: 6px;
   background-color: #2bcaa6;
-  text-align: center;
+  /* text-align: center; */
   display: flex;
-  padding: 0 50px;
+  padding: 0 30px;
   border: 1px gray solid;
 
   > input {
     background-color: transparent;
     border: none;
-    text-align: center;
+    /* text-align: center; */
     min-width: 30vw;
     outline: 0;
     color: white;
+  }
+  > input:focus::placeholder {
+    color: transparent;
   }
 `;
 const HeaderRight = styled.div`
@@ -87,5 +90,14 @@ const HeaderRight = styled.div`
   > .MuiSvgIcon-root {
     margin-left: auto;
     margin-right: 20px;
+    font-size: 40px;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 50%;
+    padding: 8px;
+    color: #072d24;
+  }
+  > .MuiSvgIcon-root:hover {
+    opacity: 0.7;
   }
 `;

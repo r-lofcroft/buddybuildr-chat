@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import CreateIcon from "@mui/icons-material/Create";
+
 import SidebarOption from "./SidebarOption";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -11,6 +11,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { auth, db } from "../Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Avatar from "@mui/material/Avatar";
 
 function Sidebar() {
   const [channels] = useCollection(db.collection("rooms"));
@@ -24,8 +25,7 @@ function Sidebar() {
             <FiberManualRecordIcon />
           </h3>
         </SidebarInfo>
-
-        <CreateIcon />
+        <HeaderAvatar src={user?.photoURL} alt={user?.displayName} />{" "}
       </SidebarHeader>
       <SidebarOption Icon={DraftsIcon} title="Notifications" />
       <SidebarOption Icon={PeopleAltIcon} title="Find a new buddy" />
@@ -47,6 +47,12 @@ function Sidebar() {
 }
 
 export default Sidebar;
+const HeaderAvatar = styled(Avatar)`
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+  }
+`;
 
 const SidebarContainer = styled.div`
   color: #072d24;

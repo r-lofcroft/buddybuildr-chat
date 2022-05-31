@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
+
 import InfoIcon from "@mui/icons-material/Info";
 import { useSelector } from "react-redux";
 import { selectRoomId } from "../features/appSlice";
@@ -35,7 +35,6 @@ function Chat() {
               <h4>
                 <strong>{roomDetails?.data().name}</strong>
               </h4>
-              <StarBorderIcon />
             </HeaderLeft>
             <HeaderRight>
               <p>
@@ -83,7 +82,6 @@ const HeaderLeft = styled.div`
 
   > h4 {
     display: flex;
-    text-transform: lowercase;
     font-size: 15px;
     margin-right: 10px;
   }

@@ -27,9 +27,9 @@ function Login() {
   return (
     <LoginContainer>
       <LoginInnerContainer>
-        <img alt="" src="logo.svg"></img>
-        <h1>Sign in to BuddyBuildr</h1>
-        <p>www.buddybuildr.com</p>
+        <img alt="Buddybuildr logo" src="logo.svg"></img>
+        <h1>Welcome to Buddybuildr</h1>
+        <p>Let's get started!</p>
         <Button onClick={signIn}>Sign in with Google</Button>
       </LoginInnerContainer>
     </LoginContainer>
@@ -59,7 +59,10 @@ const LoginInnerContainer = styled.div`
   > button {
     margin-top: 40px;
     text-transform: inherit !important;
-    background-color: #0a8d48 !important;
-    color: white;
+    background-color: #0bd6e3 !important;
+    color: black;
+  }
+  > button:hover {
+    opacity: 0.7;
   }
 `;

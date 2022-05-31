@@ -21,7 +21,7 @@ const MessageContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 20px;
-
+  flex-wrap: wrap;
   > img {
     height: 50px;
     border-radius: 8px;
