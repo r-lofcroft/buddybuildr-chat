@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
@@ -12,12 +12,19 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { auth, db } from "../Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Avatar from "@mui/material/Avatar";
+import { slide as Menu } from "react-burger-menu";
 
 function Sidebar() {
   const [channels] = useCollection(db.collection("rooms"));
   const [user] = useAuthState(auth);
+  const [hidden, setHidden] = useState(false);
+
+  const hideSidebar = () => {
+    setHidden(true);
+  };
+
   return (
-    <SidebarContainer>
+    <SidebarContainer hidden={hidden}>
       <SidebarHeader>
         <SidebarInfo>
           <h2>{user?.displayName}</h2>
@@ -29,7 +36,11 @@ function Sidebar() {
       </SidebarHeader>
       <SidebarOption Icon={DraftsIcon} title="Notifications" />
       <SidebarOption Icon={PeopleAltIcon} title="Find a new buddy" />
-      <SidebarOption Icon={ExpandLessIcon} title="Show Less" />
+      <SidebarOption
+        onClick={hideSidebar}
+        Icon={ExpandLessIcon}
+        title="Show Less"
+      />
       <hr />
       <SidebarOption Icon={ExpandMoreIcon} title="Show More" />
       <hr />
@@ -51,6 +62,11 @@ const HeaderAvatar = styled(Avatar)`
   cursor: pointer;
   :hover {
     opacity: 0.8;
+  }
+  @media (max-width: 500px) {
+    img {
+      display: none;
+    }
   }
 `;
 
@@ -104,5 +120,10 @@ const SidebarInfo = styled.div`
     margin-top: 1px;
     margin-right: 2px;
     color: lime;
+  }
+  @media (max-width: 500px) {
+    h2 {
+      font-size: 12px;
+    }
   }
 `;

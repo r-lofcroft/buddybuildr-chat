@@ -52,6 +52,11 @@ const HeaderLeft = styled.div`
     margin-left: auto;
     margin-right: 30px;
   }
+  @media (max-width: 500px) {
+    > .MuiSvgIcon-root {
+      display: none;
+    }
+  }
 `;
 
 const HeaderAvatar = styled(Avatar)`
@@ -69,6 +74,9 @@ const HeaderSearch = styled.div`
   display: flex;
   padding: 0 30px;
   border: 1px gray solid;
+  @media (max-width: 500px) {
+    border: none;
+  }
 
   > input {
     background-color: transparent;
@@ -99,5 +107,10 @@ const HeaderRight = styled.div`
   }
   > .MuiSvgIcon-root:hover {
     opacity: 0.7;
+  }
+  @media (max-width: 500px) {
+    margin: unset;
+    margin-left: 5px;
+    flex-direction: row-reverse;
   }
 `;
