@@ -37,7 +37,7 @@ function SidebarOption({ Icon, title, addChannelOption, id }) {
           <span>
             <ChatBubbleIcon />
           </span>
-          {title}
+          <p>{title}</p>
         </SidebarOptionChannel>
       )}
     </SidebarOptionContainer>
@@ -52,6 +52,9 @@ const SidebarOptionContainer = styled.div`
   padding-left: 2px;
   cursor: pointer;
   padding: 8px 5px;
+  > p {
+    text-overflow: ellipsis;
+  }
 
   :hover {
     opacity: 0.9;
@@ -62,6 +65,8 @@ const SidebarOptionContainer = styled.div`
     font-weight: 500;
     font-size: 12px;
     margin: unset;
+    display: flex;
+    align-items: baseline;
   }
   > .MuiSvgIcon-root {
     text-align: center;

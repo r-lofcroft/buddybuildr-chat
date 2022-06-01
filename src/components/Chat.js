@@ -28,7 +28,7 @@ function Chat() {
 
   return (
     <ChatContainer>
-      {roomDetails && roomMessages && (
+      {(roomDetails && roomMessages) || loading ? (
         <>
           <Header>
             <HeaderLeft>
@@ -63,12 +63,36 @@ function Chat() {
             channelId={roomId}
           />
         </>
+      ) : (
+        <InterimContainer>
+          <InterimInner>
+            <p>Please select a chat-channel to view messages.</p>
+          </InterimInner>
+        </InterimContainer>
       )}
     </ChatContainer>
   );
 }
 
 export default Chat;
+const InterimContainer = styled.div`
+  background-color: var(--chat-color);
+  background-image: linear-gradient(var(--chat-color), #0bd6e3);
+  border-left: 1px solid #2bcaa6;
+  border-top: 1px solid #2bcaa6;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  /* overflow-x: hidden;
+  overflow-y: hidden; */
+`;
+const InterimInner = styled.div`
+  margin: auto 0;
+  > p {
+    font-weight: 500;
+    padding: 0 20px;
+  }
+`;
 const Header = styled.div`
   display: flex;
   justify-content: space-between;

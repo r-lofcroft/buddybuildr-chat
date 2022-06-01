@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Avatar from "@mui/material/Avatar";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../Firebase";
@@ -20,7 +19,6 @@ function Header() {
           src="logo.svg"
           alt={user?.displayName}
         />
-        <AccessTimeIcon />
       </HeaderLeft>
       <HeaderSearch>
         <input placeholder="Search..."></input>

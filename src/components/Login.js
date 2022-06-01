@@ -28,8 +28,12 @@ function Login() {
     <LoginContainer>
       <LoginInnerContainer>
         <img alt="Buddybuildr logo" src="logo.svg"></img>
-        <h1>Welcome to Buddybuildr</h1>
-        <p>Let's get started!</p>
+        <h1>Login</h1>
+        <p>
+          When the going gets tough,
+          <br />
+          the tough get Buddybuildr{" "}
+        </p>
         <Button onClick={signIn}>Sign in with Google</Button>
       </LoginInnerContainer>
     </LoginContainer>
