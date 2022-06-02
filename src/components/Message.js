@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import Avatar from "@mui/material/Avatar";
 
 function Message({ message, timestamp, user, userImage }) {
   return (
     <MessageContainer>
-      <img src={userImage} alt={user} />
+      <HeaderAvatar src={user?.photoURL} alt={user?.displayName} />{" "}
       <MessageInfo>
         <h4>
           {user} <span>{new Date(timestamp?.toDate()).toUTCString()} </span>
@@ -22,11 +23,6 @@ const MessageContainer = styled.div`
   align-items: center;
   padding: 20px;
   flex-wrap: wrap;
-  > img {
-    height: 50px;
-    border-radius: 8px;
-    object-fit: contain;
-  }
 `;
 const MessageInfo = styled.div`
   padding-left: 10px;
@@ -36,5 +32,18 @@ const MessageInfo = styled.div`
     font-weight: 300;
     margin-left: 4px;
     font-size: 10px;
+  }
+`;
+
+const HeaderAvatar = styled(Avatar)`
+  position: unset;
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+  }
+  @media (max-width: 500px) {
+    img {
+      display: none;
+    }
   }
 `;
